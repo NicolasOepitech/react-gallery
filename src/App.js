@@ -1,7 +1,9 @@
-import React from 'react'
-import Navbar from './Components/Navbar/Navbar'
-import Photos from './Components/Photos/Photos'
-import {Routes, Route} from 'react-router-dom'
+import React from "react";
+import Navbar from "./Components/Navbar/Navbar";
+import NotFound from "./Components/NotFound/NotFound";
+
+import Photos from "./Components/Photos/Photos";
+import { Routes, Route } from "react-router-dom";
 
 export default function App() {
   return (
@@ -10,10 +12,8 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Photos />} />
-        <Route
+        <Route path="*" element={<NotFound />} />
       </Routes>
-
-      
     </div>
-  )
+  );
 }

@@ -5,6 +5,7 @@ export default function NotFound() {
   return (
     <div>
       ERROR
+      <br />
       <Link to="/">Go Home</Link>
     </div>
   );

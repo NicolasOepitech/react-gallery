@@ -1,8 +1,10 @@
 import React from "react";
 import Navbar from "./Components/Navbar/Navbar";
 import NotFound from "./Components/NotFound/NotFound";
+import Footer from "./Components/Footer/Footer";
+import Home from "./Components/Home/Home";
 
-import Photos from "./Components/Photos/Photos";
+
 import { Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -11,9 +13,11 @@ export default function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Photos />} />
+        <Route path="/" element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      
+      <Footer />
     </div>
   );
 }

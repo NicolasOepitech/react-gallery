@@ -21,6 +21,7 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  
   const handleScroll = () => {
     if (
       document.documentElement.scrollTop + window.innerHeight + 1 >=

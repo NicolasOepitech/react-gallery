@@ -3,11 +3,9 @@ import './Card.css';
 
 export default function Card(props) {
   return (
-    <div className="card-container">
-      <h3>{props.photos.title} {props.photos.id}</h3>
-      <div className="card-image">
-        <img src={props.photos.thumbnailUrl} alt="random" />
-      </div>
+    <div className="card">
+      <img src={props.photo.thumbnailUrl} alt={props.photo.title} />
+      <h3>{props.photo.title} {props.photo.id}</h3>
     </div>
   );
 }

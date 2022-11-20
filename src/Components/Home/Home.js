@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import Card from "../Card/Card";
+import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 
 export default function Home() {
   const [photos, setPhotos] = React.useState([]);
   const [page, setPage] = React.useState(1);
+  const [hasMore, setHasMore] = React.useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,29 +18,18 @@ export default function Home() {
     fetchData();
   }, [page]);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  
-  const handleScroll = () => {
-    if (
-      document.documentElement.scrollTop + window.innerHeight + 1 >=
-      document.documentElement.scrollHeight
-    ) {
-      setPage((prev) => prev + 1);
-    }
-  };
-
   return (
     <div>
       <h1>Home</h1>
-      <div className="container">
-        {photos.map((photos, index) => {
-          return <Card key={index} photos={photos} />;
-        })}
-      </div>
+      {photos.map((photo) => (
+        <Card key={photo.id} photo={photo} />
+      ))}
+      <InfiniteScroll
+        dataLength={photos.length}
+        next={() => setPage((prev) => prev + 1)}
+        hasMore={hasMore}
+        loader={<h4>Loading...</h4>}
+      />
     </div>
   );
 }

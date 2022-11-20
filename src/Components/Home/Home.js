@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Card from "../Card/Card";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
+import "./Home.css";
 
 export default function Home() {
   const [photos, setPhotos] = React.useState([]);
@@ -21,9 +22,12 @@ export default function Home() {
   return (
     <div>
       <h1>Home</h1>
-      {photos.map((photo) => (
-        <Card key={photo.id} photo={photo} />
-      ))}
+      <div className="wrapper">
+        {photos.map((photo) => (
+          <Card key={photo.id} photo={photo} />
+        ))}
+      </div>
+
       <InfiniteScroll
         dataLength={photos.length}
         next={() => setPage((prev) => prev + 1)}
